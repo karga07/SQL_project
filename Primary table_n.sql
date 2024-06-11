@@ -7,13 +7,6 @@ SELECT MAX(YEAR(date_to)),
 	   MIN (YEAR(date_to))
 FROM czechia_price cp; 
 
-----
-SELECT * 
-FROM t_marek_kalin_project_SQL_primary_final tmkpspf 
-
-SELECT *
-FROM v_as_primarytable vap 
-
 --- Primary table ----
 
 --- Úprava payroll----
@@ -50,7 +43,7 @@ CREATE VIEW pr_kg AS (
 
 --- join ----
 
-CREATE VIEW  t_Karolina_Gajduskova_project_SQL_primary_final_1 AS (
+CREATE VIEW  t_Karolina_Gajduskova_project_SQL_primary_final AS (
 	SELECT * 
 	FROM pay_kg
 		LEFT JOIN pr_kg ON pay_kg.payroll_year = pr_kg.year_product 
@@ -59,24 +52,4 @@ CREATE VIEW  t_Karolina_Gajduskova_project_SQL_primary_final_1 AS (
 	FROM pay_kg
 		RIGHT JOIN pr_kg ON pay_kg.payroll_year  = pr_kg.year_product);
 	
-
---- join ----
-
-CREATE VIEW  t_Karolina_Gajduskova_project_SQL_primary_final AS	
-SELECT * 
-FROM payroll_kg
-LEFT JOIN prices_kg ON payroll_kg.id_cpa = prices_kg.id_cpr
-UNION
-SELECT * 
-FROM payroll_kg
-RIGHT JOIN prices_kg ON payroll_kg.id_cpa = prices_kg.id_cpr;
-
-
-
-
-
-
-
-
-
 
