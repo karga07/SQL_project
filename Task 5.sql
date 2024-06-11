@@ -1,6 +1,6 @@
 ---- Task 5 -----
 --------- help table 3 ----------
-CREATE VIEW kg_help3 AS
+CREATE VIEW kg_3 AS
 WITH subquery AS (
     SELECT 
         payroll_year,
@@ -19,7 +19,7 @@ WHERE payroll_year > 2006;
 
 ---------- help table 4 ---------------
 
-CREATE VIEW kg_help4 AS
+CREATE VIEW kg_4 AS
 WITH subquery AS (
     SELECT 
         year_product,
@@ -38,7 +38,7 @@ WHERE year_product > 2006;
 
 -------- help table 5 ---------------
 
-CREATE VIEW kg_help5 AS
+CREATE VIEW kg_5 AS
 WITH subquery AS ( 
 	SELECT 
 		year,
@@ -67,14 +67,12 @@ SELECT
 	difference_GDP,
 	previous_difference_GDP
 FROM (
-SELECT 
-	payroll_year,
-	difference_income_perc,
-	difference_price_perc,
-	difference_GDP,
-	previous_difference_GDP
-	FROM kg_help3
-	LEFT JOIN kg_help4
-	ON kg_help3.payroll_year = kg_help4.year_product
-	LEFT JOIN kg_help5
-	ON kg_help3.payroll_year = kg_help5.year) AS subquery1;
+	SELECT 
+		payroll_year,
+		difference_income_perc,
+		difference_price_perc,
+		difference_GDP,
+		previous_difference_GDP
+	FROM kg_3
+	LEFT JOIN kg_4 ON kg_3.payroll_year = kg_4.year_product
+	LEFT JOIN kg_help5 ON kg_3.payroll_year = kg_5.year) AS subquery1;
