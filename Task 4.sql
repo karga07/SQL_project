@@ -1,7 +1,7 @@
 --- Task 4 -----
 ----- help table 3 -------------
 
-CREATE VIEW kg_help3 AS
+CREATE VIEW kg_3 AS
 WITH subquery AS (
     SELECT 
         payroll_year,
@@ -20,7 +20,7 @@ WHERE payroll_year > 2006;
 
 ----- help table 4 --------------
 
-CREATE VIEW kg_help4 AS
+CREATE VIEW kg_4 AS
 WITH subquery AS (
     SELECT 
         year_product,
@@ -37,7 +37,7 @@ SELECT
 FROM subquery
 WHERE year_product > 2006;
 
---------- differences incmoe and prices  -------
+--------- differences income and prices  -------
 
 SELECT 
 	payroll_year,
@@ -45,11 +45,10 @@ SELECT
 	difference_income_perc,
 	(difference_price_perc - difference_income_perc) AS difference
 FROM (
-SELECT 
-	payroll_year,
-	difference_income_perc,
-	difference_price_perc
-	FROM kg_help3
-	LEFT JOIN kg_help4
-	ON kg_help3.payroll_year = kg_help4.year_product) AS subquery1
+	SELECT 
+		payroll_year,
+		difference_income_perc,
+		difference_price_perc
+	FROM kg_3
+	LEFT JOIN kg_4 ON kg_3.payroll_year = kg_4.year_product) AS subquery1
 ORDER BY difference DESC;
